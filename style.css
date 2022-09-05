@@ -1,31 +1,53 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto&display=swap');
 
 body {
     font-family: "Roboto", sans-serif;
+    background-color: rgb(89, 180, 184);
+    margin: 0;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
 
 h6,
-h4 {
+h4,
+h3 {
   margin: 0px;
   padding: 0px;
   border: 0px;
 }
 
+h3 {
+  font-family: 'Lobster', cursive, sans-serif;
+  color:rgb(223, 202, 7)
+}
+
 #sketch-all {
-    background-color: darkred;
+    background-color: #c51f1f;
     height: 600px;
     width: 750px;
+    border: 5px solid #c51f1f;
+    border-bottom: 8px solid #960f0f;
+    border-right: 8px solid #960f0f;
+    border-radius: 35px;
 }
 
 #sketch-area {
-    background-color: grey;
-    height: 400px;
-    width: 600px;
+  background-color: #999999;
+  height: 400px;
+  width: 600px;
+  border-left: 5px solid #960f0f;
+  border-top: 5px solid #960f0f;
+  border-bottom: 5px solid #dd9f9f;
+  border-right: 5px solid #dd9f9f;
+  border-radius: 10px;
 }
+
 
 #sketch-top {
     height: 75px;
-    background-color: darkred;
+    justify-content: center;
+    align-items: center;
 }
 
 #sketch-mid {
@@ -35,11 +57,11 @@ h4 {
 
 #sketch-bottom {
     height: 125px;
-    background-color: darkred;
     align-items: center;
     justify-content: space-between;
 }
 
+body,
 .container {
     display: flex;
 }
@@ -53,9 +75,14 @@ h4 {
 }
 
 #control-panel {
+    margin: 8px 0 0 0;
     background-color: white;
+    border-top: 5px solid #960f0f;
+    border-left: 5px solid #960f0f;
+    border-bottom: 5px solid #dd9f9f;
+    border-right: 5px solid #dd9f9f;
     align-items: center;
-    padding: 20px;
+    padding: 10px 20px;
     gap: 10px
 }
 
@@ -66,6 +93,11 @@ h4 {
 
 #button-reset {
     font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: rgb(23, 116, 43);
+    background-color: rgb(9, 231, 76);
+    border: 2px solid rgb(18, 156, 60);
+    border-radius: 5px;
     height: 2.5em;
     width: 5em;
 }
@@ -85,6 +117,8 @@ h4 {
 
 .knob {
     background-color: white;
+    border-bottom: 5px solid #960f0f;
+    border-right: 5px solid #960f0f;
     height: 80px;
     width: 80px;
     margin: 0 30px;
