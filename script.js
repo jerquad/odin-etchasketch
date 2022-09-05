@@ -1,3 +1,6 @@
+// global variable used for keyboard controls
+let cursor = null;
+
 // Updates the resolution value on scroll
 document.getElementById('rez-scroll').oninput = (e) => {
     const sizeLabels = [ 'x-bold', 'bold', 'medium', 'fine', 'x-fine' ];
@@ -11,6 +14,58 @@ document.getElementById('button-reset').addEventListener('click', () => {
         sketchArea.removeChild(sketchArea.firstChild);
     };
     makeEtchArea();
+});
+
+// All keyboard bindings as follows: 
+document.addEventListener('keydown', (e) => {
+    if (e.key == 'w') {
+        let shadeCheck = document.getElementById('check-shader');
+        shadeCheck.checked = (shadeCheck.checked) ? false : true;
+    }
+
+    if (e.key == 'e') {
+        let revCheck = document.getElementById('check-reverse');
+        revCheck.checked = (revCheck.checked) ? false: true;
+    }
+    
+    if (e.key == '`') {
+        const sketchArea = document.getElementById('sketch-area');
+        if (getComputedStyle(sketchArea).getPropertyValue('background-color') == 'rgb(153, 153, 153)') {
+            sketchArea.style.backgroundColor = 'rgb(255, 255 , 255)';
+        } else {
+            sketchArea.style.backgroundColor = 'rgb(153, 153, 153)';
+        }
+    }
+
+    if (e.key == 'ArrowRight') {        
+        if (cursor.nextElementSibling) {
+            cursor = cursor.nextElementSibling;
+        }
+        setColor(cursor);
+    }
+
+    if (e.key == 'ArrowLeft') {
+        if (cursor.previousElementSibling) { 
+            cursor = cursor.previousElementSibling;
+        }
+        setColor(cursor);
+    }
+
+    if (e.key == 'a') {
+        if (cursor.parentNode.nextSibling) {
+            const pos = Array.prototype.indexOf.call(cursor.parentNode.children, cursor);
+            cursor = cursor.parentNode.nextSibling.children[pos];
+        }
+        setColor(cursor);
+    }
+
+    if (e.key == 'd') {
+        if (cursor.parentNode.previousSibling) {
+            const pos = Array.prototype.indexOf.call(cursor.parentNode.children, cursor);
+            cursor = cursor.parentNode.previousSibling.children[pos];
+        }
+        setColor(cursor);
+    }
 });
 
 // Main function for building the draw area
@@ -29,6 +84,7 @@ const makeEtchArea = (function () {
         }
         document.getElementById('sketch-area').appendChild(row);
     }
+    cursor = document.getElementById('sketch-area').firstChild.firstChild;
 });
 
 // Individual elements of the drawing area
@@ -41,6 +97,7 @@ const makeBlock = (function (rez) {
         width: ${rez}px;`);
     div.addEventListener('mouseover', (e) => {
         setColor(e.target)
+        cursor = e.target;
     });
     return div;
 });

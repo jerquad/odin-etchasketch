@@ -9,6 +9,11 @@ body {
     align-items: center;
 }
 
+p {
+  color:rgb(6, 118, 146);
+  font-weight: bold;
+}
+
 h6,
 h4,
 h3 {
@@ -30,6 +35,7 @@ h3 {
     border-bottom: 8px solid #960f0f;
     border-right: 8px solid #960f0f;
     border-radius: 35px;
+    flex-shrink: 0;
 }
 
 #sketch-area {
@@ -66,6 +72,7 @@ body,
     display: flex;
 }
 
+body,
 .column {
     flex-direction: column;
 }
@@ -76,7 +83,7 @@ body,
 
 #control-panel {
     margin: 8px 0 0 0;
-    background-color: white;
+    background-color: rgb(240, 243, 225);
     border-top: 5px solid #960f0f;
     border-left: 5px solid #960f0f;
     border-bottom: 5px solid #dd9f9f;
